@@ -1,4 +1,15 @@
+"""
+input 2 square matrix and choose:
+1 for print the adding
+2 for print the mul
+3 for printing our input
+4 to choose again 2 matrix
+5 to exit the program
 
+you can find this code in the git:
+https://github.com/Babilabong/analiza-nomarit
+
+"""
 def sumMatrix(mat1,mat2,size):
     newMatrix = []
     for i in range(size):

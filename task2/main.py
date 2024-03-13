@@ -1,4 +1,6 @@
-
+"""
+you can find this git in https://github.com/Babilabong/analiza-nomarit/blob/main/task2/main.py
+"""
 def Jacoby(matrix):
     solution = []
     solution.append([0,0,0])
@@ -9,14 +11,6 @@ def Jacoby(matrix):
 
         while i != 0:
             for j in range(len(paramaterMat)):
-                """
-                if j == 0:
-                     newRow.append((matrix[j][3]-(matrix[j][2]*solution[i-1][2])-(matrix[j][1])*solution[i-1][1])/matrix[j][j])
-                if j == 1:
-                    newRow.append((matrix[j][3] - (matrix[j][2]*solution[i-1][2]) - (matrix[j][0]*solution[i-1][0])) / matrix[j][j])
-                if j == 2:
-                    newRow.append((matrix[j][3] - (matrix[j][0]*solution[i-1][0]) - (matrix[j][1]*solution[i-1][1])) / matrix[j][j])
-                """
                 value = matrix[j][3]
                 for k in range(len(paramaterMat)):
                     if k != j:
@@ -44,14 +38,6 @@ def Gauss_seidel(matrix):
 
         while i != 0:
             for j in range(len(paramaterMat)):
-                """
-                if j == 0:
-                     newRow.append((matrix[j][3]-(matrix[j][2]*solution[i-1][2])-(matrix[j][1])*solution[i-1][1])/matrix[j][j])
-                if j == 1:
-                    newRow.append((matrix[j][3] - (matrix[j][2]*solution[i-1][2]) - (matrix[j][0]*solution[i-1][0])) / matrix[j][j])
-                if j == 2:
-                    newRow.append((matrix[j][3] - (matrix[j][0]*solution[i-1][0]) - (matrix[j][1]*solution[i-1][1])) / matrix[j][j])
-                """
                 value = matrix[j][3]
                 for k in range(len(paramaterMat)):
                     if k != j:
@@ -74,7 +60,11 @@ def Gauss_seidel(matrix):
 
 def checkDominant(matrix):
     for i in range(len(matrix)):
-        if matrix[i][i]<=0.000001 and matrix[i][i]>=-0.000001:
+        sum = 0
+        for j in range(len(matrix)):
+            if i != j:
+                sum += abs(matrix[i][j])
+        if abs(matrix[i][i]) <= sum:
             print("not dominant")
             return False
     return True
@@ -105,9 +95,9 @@ def checkStopCondition(matrix):
 
 stopCon = 0.001
 
-a = ([4,2,0,2],
-     [2,10,4,6],
-     [0,4,5,5])
+a = ([3,1,1,7],
+     [1,3,1,11],
+     [1,1,3,7])
 
 JacobyMatrix = Jacoby(a)
 print("after ",len(JacobyMatrix)-1," iterations in Jacoby method the solution is:")
@@ -115,3 +105,4 @@ print(JacobyMatrix[len(JacobyMatrix)-1])
 GaussMatrix = Gauss_seidel(a)
 print("after ",len(GaussMatrix)-1," iterations in Gauss seidel method the solution is:")
 print(GaussMatrix[len(GaussMatrix)-1])
+
